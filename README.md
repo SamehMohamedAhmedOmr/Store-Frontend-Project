@@ -1,4 +1,4 @@
-# image-processing-udacity-project-1-nodejs-project
+# store-frontend-udacity-project-1-nodejs-project
 this project due to Phase one of FWD-Egypt at Udacity
 
 you can test the project through
