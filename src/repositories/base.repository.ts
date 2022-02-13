@@ -22,7 +22,7 @@ export default abstract class BaseRepository<T> implements BaseRepositoryInterfa
         return result.rows;
     }
 
-    async get(value: number | string, column: string): Promise<T> {
+    async get(value: number | string, column: string = 'id'): Promise<T> {
         const result = await DB.query(`SELECT * FROM ${this.table} WHERE ${column} = $1`, [value]);
         return result.rows[0];
     }
