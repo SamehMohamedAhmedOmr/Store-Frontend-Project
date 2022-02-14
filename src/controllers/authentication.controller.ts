@@ -1,40 +1,35 @@
-import { Request, Response } from 'express'
+import {Request, Response} from 'express';
+import {response} from '../helpers/reponse.helper';
+import {SUCCESS, INTERNAL_SERVER_ERROR, VALIDATION_RESPONSE,} from '../helpers/status.codes.helper';
+import AuthenticationService from '../services/authentication.service';
 
-import {response} from '../helpers/reponse.helper'
-import {SUCCESS, INTERNAL_SERVER_ERROR, VALIDATION_RESPONSE} from '../helpers/status.codes.helper'
-import AuthenticationService from "../services/authentication.service";
-
-const _service = AuthenticationService
+const _service = AuthenticationService;
 export default class AuthenticationController {
-    /**
-     * * login
-     */
+
     static login = async (req: Request, res: Response) => {
         try {
-            const model = await _service.login(req)
+            const model = await _service.login(req);
             if (model) {
-                return response(SUCCESS, res, model, 'Login successful')
+                return response(SUCCESS, res, model, 'Login successful');
             } else {
-                return response(VALIDATION_RESPONSE, res, model, 'Invalid Credentials')
+                return response(VALIDATION_RESPONSE, res, model, 'Invalid Credentials');
             }
         } catch (error) {
-            return response(INTERNAL_SERVER_ERROR, res, error)
+            return response(INTERNAL_SERVER_ERROR, res, error);
         }
-    }
+    };
 
-    /**
-     * * register
-     */
+
     static register = async (req: Request, res: Response) => {
         try {
-            const model = await _service.register(req)
+            const model = await _service.register(req);
             if (model) {
-                return response(SUCCESS, res, model, 'Register successful')
+                return response(SUCCESS, res, model, 'Register successful');
             } else {
-                throw new Error('Unable to register user')
+                return response(VALIDATION_RESPONSE, res, model, 'Cannot register new user');
             }
         } catch (error) {
-            return response(INTERNAL_SERVER_ERROR, res, error)
+            return response(INTERNAL_SERVER_ERROR, res, error);
         }
-    }
+    };
 }

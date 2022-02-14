@@ -1,5 +1,5 @@
 const DB_TABLES = {
-    users: 'users',
-}
+  users: 'users',
+};
 
-export default DB_TABLES
+export default DB_TABLES;

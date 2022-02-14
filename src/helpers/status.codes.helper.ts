@@ -4,4 +4,3 @@ export const VALIDATION_RESPONSE = 422;
 export const UN_AUTHORIZED = 401;
 export const UN_AUTHENTICATE = 401;
 export const NOF_FOUND = 404;
-
