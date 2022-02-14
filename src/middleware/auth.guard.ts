@@ -22,13 +22,15 @@ export const authorized = async (
     const is_valid_jwt = jwt.verify(token, jwtSecret as string);
 
     if (!is_valid_jwt) {
-      throw new Error();
+      return response(UN_AUTHORIZED, res);
     }
 
     const payload = jwt.decode(token);
 
     const user: User = await _repo.get(payload?.sub as string);
-    if (!user) throw new Error();
+    if (!user) {
+      return response(UN_AUTHORIZED, res);
+    }
 
     res.locals.user = hidePassword(user);
 

@@ -1,5 +1,6 @@
+import { User } from './user.model';
+
 export interface AuthModel {
-  id: Number;
-  name: string;
-  email: string;
+  user: User;
+  token: string;
 }

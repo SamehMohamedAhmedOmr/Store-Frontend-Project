@@ -1,7 +1,10 @@
-import express, {Request, Response} from 'express';
+import express, { Request, Response } from 'express';
 import UsersController from '../../../controllers/users.controller';
-import {authorized} from '../../../middleware/auth.guard';
-import {createUserRequest, UpdateUserRequest} from '../../../requests/user.request';
+import { authorized } from '../../../middleware/auth.guard';
+import {
+  createUserRequest,
+  UpdateUserRequest,
+} from '../../../requests/user.request';
 
 const users_route = express.Router();
 const _controller = UsersController;
