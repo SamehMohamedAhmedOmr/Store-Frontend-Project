@@ -9,7 +9,7 @@
     "build": "npx tsc",
     "jasmine": "jasmine",
     "migrate": "db-migrate --env test up && db-migrate up",
-    "db:seed": "npm run build&&node build/helpers/seeders/database.seeder.js",
+    "db:seed": "npm run build&&node dist/helpers/seeders/database.seeder.js",
     "db-test": "ENV=test db-migrate --env test up && jasmine-ts && db-migrate db:drop test",
     "test": "npm run build && npm run jasmine --silent && npm run db-test",
     "start": "nodemon src/server.ts"

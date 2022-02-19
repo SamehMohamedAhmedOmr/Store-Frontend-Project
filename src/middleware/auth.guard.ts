@@ -28,7 +28,10 @@ export const authorized = async (
 
         const payload:JWTPayloadModel = jwt.decode(token) as JWTPayloadModel;
 
-        const user: User = await _repo.get(payload?.user_id);
+        let user_id = payload?.user_id;
+        user_id = user_id ? user_id : 0;
+
+        const user: User = await _repo.get(user_id);
         if (!user) {
             return response(UN_AUTHORIZED, res);
         }

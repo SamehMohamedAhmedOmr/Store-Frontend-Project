@@ -3,5 +3,5 @@ CREATE TABLE products (
     name VARCHAR(255),
     price FLOAT,
     category_id INTEGER NOT NULL,
-    FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES categories (id) ON DELETE CASCADE
 );
