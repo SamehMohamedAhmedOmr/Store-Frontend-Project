@@ -34,20 +34,20 @@ export default abstract class BaseRepository<T>
     return result.rows[0];
   }
 
-  async update(model: Partial<T>): Promise<T> {
+  async update(model: Partial<T>, id: number): Promise<T> {
     const columns = Object.keys(model).filter((key) => key != 'id');
-    const values = Object.values(model);
+    const values = Object.values(model).filter((key) => key != 0);
     const columns_values = columns
-      .map((column, index) => `${column} = $${index + 2}`)
+      .map((column, index) => `${column} = $${index + 1}`)
       .join(', ');
 
-    const queryText = `UPDATE ${this.table} SET ${columns_values} WHERE id = $1 RETURNING *`;
+    const queryText = `UPDATE ${this.table} SET ${columns_values} WHERE id = ${id} RETURNING *`;
     const result = await DB.query(queryText, values);
     return result.rows[0];
   }
 
   async delete(id: number): Promise<boolean> {
-    const result = await DB.query(`DELETE FROM ${this.table} WHERE id = $1`, [
+    const result = await DB.query(`DELETE FROM ${this.table} WHERE id = ${id}`, [
       id,
     ]);
     return result.rowCount > 0;

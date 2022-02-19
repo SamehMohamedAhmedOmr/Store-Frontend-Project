@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import UsersService from '../services/users.service';
 import { response } from '../helpers/reponse.helper';
 import {
   SUCCESS,
@@ -7,10 +6,11 @@ import {
   NOF_FOUND,
   VALIDATION_RESPONSE,
 } from '../helpers/status.codes.helper';
+import CategoriesService from "../services/categories.service";
 
-const _service = UsersService;
+const _service = CategoriesService;
 
-export default class UsersController {
+export default class CategoriesController {
   static index = async (req: Request, res: Response) => {
     try {
       const model = await _service.index();
@@ -24,7 +24,7 @@ export default class UsersController {
     try {
       const model = await _service.get(req);
       if (!model) {
-        return response(NOF_FOUND, res);
+        return response(NOF_FOUND, res, [], 'NO CATEGORY FOUND');
       }
       return response(SUCCESS, res, model);
     } catch (error) {

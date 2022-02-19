@@ -11,7 +11,7 @@ import {JWTPayloadModel} from "../models/JWTPayload.model";
 const jwtSecret = application_config.jwt_secret;
 const _repo = new UsersRepository();
 
-export const authorized = async (
+export const admin_guard = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -20,7 +20,7 @@ export const authorized = async (
         const authorization_header = req.headers.authorization as string;
         const token = authorization_header ? authorization_header.split(' ')[1] : '';
 
-        if (!token){
+        if (!token) {
             return response(UN_AUTHORIZED, res, null, 'You are unauthorized for this action');
         }
 
@@ -30,13 +30,17 @@ export const authorized = async (
             return response(UN_AUTHORIZED, res, null, 'You are unauthorized for this action');
         }
 
-        const payload:JWTPayloadModel = jwt.decode(token) as JWTPayloadModel;
+        const payload: JWTPayloadModel = jwt.decode(token) as JWTPayloadModel;
 
         let user_id = payload?.user_id;
         user_id = user_id ? user_id : 0;
 
         const user: User = await _repo.get(user_id);
         if (!user) {
+            return response(UN_AUTHORIZED, res, null, 'You are unauthorized for this action');
+        }
+
+        if (user.type != 0) {
             return response(UN_AUTHORIZED, res, null, 'You are unauthorized for this action');
         }
 

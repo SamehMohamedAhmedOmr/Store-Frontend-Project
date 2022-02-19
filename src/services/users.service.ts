@@ -26,7 +26,8 @@ export default class UsersService {
   };
 
   static update = async (req: Request): Promise<User | null> => {
-    const post = req.body;
-    return await _repo.update(post);
+    const model = req.body;
+    const model_id = req.params.id;
+    return await _repo.update(model, Number(model_id));
   };
 }
