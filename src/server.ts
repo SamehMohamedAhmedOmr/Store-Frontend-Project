@@ -5,13 +5,16 @@ import routes from './routes/api/index/index.router';
 const app = express();
 const port = 3000;
 
-// const cors_options = {
-//     origin: 'localhost',
-//     optionsSuccessStatus: 200
-// };
-// app.use(cors(cors_options));
+app.use(
+    cors(),
+    express.json(),
+    express.urlencoded({
+      extended: true
+    }),
+);
 
-app.use('/', routes);
+app.use('/api', routes);
+
 
 app.listen(port, () => {
   console.log(`Server is working on post ${port}`);

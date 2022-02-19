@@ -42,7 +42,7 @@ To Seed application
 
 Admin Email and Password
 
-email :: sameh@gmail.com,
+email :: sameh@gmail.com
 
 password :: 123456
 

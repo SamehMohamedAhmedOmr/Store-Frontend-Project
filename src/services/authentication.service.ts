@@ -1,5 +1,5 @@
 import application_config from '../config/app.config';
-import {Request, Response} from 'express';
+import {Request} from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import {hidePassword} from '../helpers/sanitizer';
@@ -12,9 +12,9 @@ const _repo = new UsersRepository();
 
 export default class AuthenticationService {
     static login = async (req: Request): Promise<AuthModel | null> => {
-        const {username, password} = req.body;
+        const { email, password } = req.body;
 
-        const user = await _repo.get(username, 'username');
+        const user = await _repo.get(email, 'email');
 
         if (!user) {
             return null;
@@ -40,6 +40,8 @@ export default class AuthenticationService {
             application_config.bcrypt_salt
         );
 
+        user.type = 1;
+
         const createdUser = await _repo.create(user);
 
         return generateAuthObject(createdUser);
@@ -51,6 +53,7 @@ const generateAuthObject = (user: User): AuthModel => {
         user_id: user.id,
         name: `${user.first_name} ${user.last_name}`
     }
+
     const generatedToken = jwt.sign(
         payload,
         application_config.jwt_secret as string,
@@ -62,5 +65,3 @@ const generateAuthObject = (user: User): AuthModel => {
         user: hidePassword(user),
     };
 };
-
-export const authUser = (res: Response) => res.locals.user;
