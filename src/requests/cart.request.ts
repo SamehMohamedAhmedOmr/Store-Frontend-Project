@@ -32,7 +32,7 @@ const createRequest = async (
     if (isNaN(product_id)) {
       errorsBag.push('Please Select Valid Product');
     }
-    let productsModel = await _repo.get(product_id);
+    const productsModel = await _repo.get(product_id);
 
     if (!productsModel) {
       errorsBag.push('Please Select Valid Product');
@@ -57,7 +57,7 @@ const deleteRequest = async (
     if (isNaN(product_id)) {
       errorsBag.push('Please Select Valid Product');
     }
-    let productsModel = await _repo.get(product_id);
+    const productsModel = await _repo.get(product_id);
 
     if (!productsModel) {
       errorsBag.push('Please Select Valid Product');

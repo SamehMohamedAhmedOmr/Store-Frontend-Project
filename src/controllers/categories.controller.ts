@@ -34,7 +34,7 @@ export default class CategoriesController {
 
   static create = async (req: Request, res: Response): Promise<void> => {
     try {
-      const model = await _service.create(req, res);
+      const model = await _service.create(req);
       if (model) {
         return response(SUCCESS, res, model);
       } else {

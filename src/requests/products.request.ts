@@ -2,9 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { response } from '../helpers/reponse.helper';
 import { VALIDATION_RESPONSE } from '../helpers/status.codes.helper';
 import CategoriesRepository from '../repositories/categories.repository';
-import ProductsRepository from '../repositories/products.repository';
 
-const _repo = new ProductsRepository();
 const categoriesRepository = new CategoriesRepository();
 
 const createRequest = async (
@@ -46,7 +44,7 @@ const createRequest = async (
     if (isNaN(price)) {
       errorsBag.push('Please Select Valid Category');
     }
-    let categoriesModel = await categoriesRepository.get(category_id);
+    const categoriesModel = await categoriesRepository.get(category_id);
 
     if (!categoriesModel) {
       errorsBag.push('Please Select Valid Category');
@@ -91,7 +89,7 @@ const updateRequest = async (
     if (isNaN(category_id)) {
       errorsBag.push('Please Select Valid Category');
     }
-    let categoriesModel = await categoriesRepository.get(category_id);
+    const categoriesModel = await categoriesRepository.get(category_id);
 
     if (!categoriesModel) {
       errorsBag.push('Please Select Valid Category');
@@ -115,7 +113,7 @@ const filterRequest = async (
     if (isNaN(category_id)) {
       errorsBag.push('Please Select Valid Category');
     }
-    let categoriesModel = await categoriesRepository.get(category_id);
+    const categoriesModel = await categoriesRepository.get(category_id);
 
     if (!categoriesModel) {
       errorsBag.push('Please Select Valid Category');

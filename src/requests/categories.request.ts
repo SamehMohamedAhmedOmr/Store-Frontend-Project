@@ -1,9 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import { response } from '../helpers/reponse.helper';
 import { VALIDATION_RESPONSE } from '../helpers/status.codes.helper';
-import CategoriesRepository from '../repositories/categories.repository';
-
-const _repo = new CategoriesRepository();
 
 const createRequest = async (
   req: Request,

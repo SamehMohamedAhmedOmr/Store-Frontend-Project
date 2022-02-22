@@ -3,7 +3,6 @@ import { response } from '../helpers/reponse.helper';
 import {
   SUCCESS,
   INTERNAL_SERVER_ERROR,
-  NOF_FOUND,
   VALIDATION_RESPONSE,
 } from '../helpers/status.codes.helper';
 import CartService from '../services/cart.service';

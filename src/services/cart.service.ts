@@ -17,7 +17,7 @@ export default class CartService {
       cartModel = await _repo.create({ user_id: user.id });
     }
 
-    let filter_object = {
+    const filter_object = {
       cart_id: cartModel.id,
       user_id: user.id,
     };
@@ -37,7 +37,7 @@ export default class CartService {
     const target_model = req.body;
     target_model.cart_id = cartModel.id;
 
-    let check_cart_item = await cartItemsRepository.checkCARTITEM(
+    const check_cart_item = await cartItemsRepository.checkCARTITEM(
       cartModel.id,
       'cart_id',
       target_model.product_id,

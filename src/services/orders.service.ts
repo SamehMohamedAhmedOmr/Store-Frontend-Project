@@ -18,17 +18,14 @@ export default class OrdersService {
     res: Response
   ): Promise<OrdersModel[]> => {
     const user = res.locals.user;
-    let filter_object = {
+    const filter_object = {
       user_id: user.id,
     };
     return await ordersRepository.index(filter_object);
   };
 
-  static orderItems = async (
-    req: Request,
-    res: Response
-  ): Promise<OrderItemsModel[]> => {
-    let filter_object = {
+  static orderItems = async (req: Request): Promise<OrderItemsModel[]> => {
+    const filter_object = {
       order_id: req.params.id,
     };
     return await ordersItemsRepository.index(filter_object);
@@ -44,19 +41,19 @@ export default class OrdersService {
       cartModel = await cartRepository.create({ user_id: user.id });
     }
 
-    let filter_object = {
+    const filter_object = {
       cart_id: cartModel.id,
       user_id: user.id,
     };
-    let cart_items = await cartItemsRepository.index(filter_object);
+    const cart_items = await cartItemsRepository.index(filter_object);
 
     if (cart_items.length) {
-      let ordersModel = await ordersRepository.create({
+      const ordersModel = await ordersRepository.create({
         user_id: user.id,
         status: 0,
       });
       for (const item of cart_items) {
-        let cart_item_model: OrderItemsModel = {
+        const cart_item_model: OrderItemsModel = {
           order_id: Number(ordersModel.id),
           product_id: item.product_id,
           quantity: item.quantity,

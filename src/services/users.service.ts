@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request } from 'express';
 import UsersRepository from '../repositories/users.repository';
 import { User } from '../models/user.model';
 import { hidePassword } from '../helpers/sanitizer';
@@ -9,7 +9,7 @@ const _repo = new UsersRepository();
 
 export default class UsersService {
   static index = async (): Promise<User[]> => {
-    let target_users: User[] = [];
+    const target_users: User[] = [];
 
     await _repo.index().then((users) => {
       users.forEach((user) => {
@@ -30,14 +30,14 @@ export default class UsersService {
     return model;
   };
 
-  static create = async (req: Request, res: Response): Promise<User | null> => {
+  static create = async (req: Request): Promise<User | null> => {
     const model = req.body;
     model.password = bcrypt.hashSync(
       model.password + application_config.bcrypt_paper,
       application_config.bcrypt_salt
     );
 
-    let target_model = await _repo.create(model);
+    const target_model = await _repo.create(model);
     return hidePassword(target_model);
   };
 
@@ -50,7 +50,7 @@ export default class UsersService {
       );
     }
     const model_id = req.params.id;
-    let target_model = await _repo.update(model, Number(model_id));
+    const target_model = await _repo.update(model, Number(model_id));
     return hidePassword(target_model);
   };
 }

@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request } from 'express';
 import CategoriesRepository from '../repositories/categories.repository';
 import { CategoriesModel } from '../models/categories.model';
 
@@ -18,10 +18,7 @@ export default class CategoriesService {
     return model;
   };
 
-  static create = async (
-    req: Request,
-    res: Response
-  ): Promise<CategoriesModel | null> => {
+  static create = async (req: Request): Promise<CategoriesModel | null> => {
     const model = req.body;
     return await _repo.create(model);
   };
@@ -30,7 +27,7 @@ export default class CategoriesService {
     const { name } = req.body;
     const model_id = req.params.id;
 
-    let model: CategoriesModel = {
+    const model: CategoriesModel = {
       name: name,
     };
 

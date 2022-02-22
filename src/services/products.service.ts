@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request } from 'express';
 import ProductsRepository from '../repositories/products.repository';
 import { ProductsModel } from '../models/products.model';
 
@@ -24,16 +24,13 @@ export default class ProductsService {
       return null;
     }
 
-    let new_model = {
+    const new_model = {
       views: model.views + 1,
     };
     return await _repo.update(new_model, Number(id));
   };
 
-  static create = async (
-    req: Request,
-    res: Response
-  ): Promise<ProductsModel | null> => {
+  static create = async (req: Request): Promise<ProductsModel | null> => {
     const model = req.body;
     return await _repo.create(model);
   };

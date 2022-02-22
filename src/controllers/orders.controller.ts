@@ -3,7 +3,6 @@ import { response } from '../helpers/reponse.helper';
 import {
   SUCCESS,
   INTERNAL_SERVER_ERROR,
-  NOF_FOUND,
   VALIDATION_RESPONSE,
 } from '../helpers/status.codes.helper';
 import OrdersService from '../services/orders.service';
@@ -22,7 +21,7 @@ export default class OrdersController {
 
   static orderItems = async (req: Request, res: Response) => {
     try {
-      const model = await _service.orderItems(req, res);
+      const model = await _service.orderItems(req);
       return response(SUCCESS, res, model);
     } catch (error) {
       return response(INTERNAL_SERVER_ERROR, res, error);

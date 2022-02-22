@@ -16,7 +16,7 @@ export default abstract class BaseRepository<T>
     return result.rows;
   }
 
-  async get(value: number | string, column: string = 'id'): Promise<T> {
+  async get(value: number | string, column = 'id'): Promise<T> {
     const result = await DB.query(
       `SELECT * FROM ${this.table} WHERE ${column} = $1`,
       [value]
@@ -25,8 +25,8 @@ export default abstract class BaseRepository<T>
   }
 
   async create(model: Partial<T>): Promise<T> {
-    let columns = Object.keys(model).join(', ');
-    let values = Object.keys(model)
+    const columns = Object.keys(model).join(', ');
+    const values = Object.keys(model)
       .map((value, index) => `$${index + 1}`)
       .join(', ');
     const queryText = `INSERT INTO ${this.table} (${columns}) VALUES (${values}) RETURNING *`;

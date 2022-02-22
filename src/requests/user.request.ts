@@ -112,7 +112,7 @@ const UpdateRequest = async (
       errorsBag.push('Please Enter Valid Email');
     }
 
-    let model = await _repo.get(email, 'email');
+    const model = await _repo.get(email, 'email');
     if (model) {
       if (model.id != Number(req.params.id)) {
         errorsBag.push('Email is already taken');

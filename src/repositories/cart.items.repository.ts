@@ -23,9 +23,9 @@ export default class CartItemsRepository extends BaseRepository<CartItemsModel> 
 
   async checkCARTITEM(
     value_1: number | undefined,
-    column_1: string = 'cart_id',
+    column_1 = 'cart_id',
     value_2: number,
-    column_2: string = 'product_id'
+    column_2 = 'product_id'
   ): Promise<CartItemsModel> {
     const result = await DB.query(
       `SELECT *
@@ -39,9 +39,9 @@ export default class CartItemsRepository extends BaseRepository<CartItemsModel> 
 
   async deleteCARTITEM(
     value_1: number | undefined,
-    column_1: string = 'cart_id',
+    column_1 = 'cart_id',
     value_2: number,
-    column_2: string = 'product_id'
+    column_2 = 'product_id'
   ): Promise<CartItemsModel> {
     const result = await DB.query(
       `Delete
@@ -55,7 +55,7 @@ export default class CartItemsRepository extends BaseRepository<CartItemsModel> 
 
   async clearCart(
     value_1: number | undefined,
-    column_1: string = 'cart_id'
+    column_1 = 'cart_id'
   ): Promise<CartItemsModel> {
     const result = await DB.query(
       `Delete
