@@ -58,5 +58,12 @@ Postman Link => https://documenter.getpostman.com/view/18438451/UVkmQx4M#6318ab1
 
 ### Order
 
-- TEST
+Endpoint => api/orders,
+
+Postman Link =>
+https://documenter.getpostman.com/view/18438451/UVkmQx4M#fb70a45a-f238-4733-9ff2-9d26b1b087c6
+
+- List
+- Create
+- details
 
