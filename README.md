@@ -10,6 +10,76 @@ This project is simple e-commerce with Node.JS, Express Server and Postgresql.
 - JWT for Auth tokens
 - Jasmine for testing
 
+### Setup
+
+Server port **3000**
+
+Database port **5432**
+
+**Create User**
+
+``
+ssh
+CREATE USER postgres WITH PASSWORD '1';
+``
+
+**Create DB**
+
+``
+CREATE DATABASE store_frontend_staging;
+``
+
+``
+CREATE DATABASE store_frontend_test;
+``
+
+
+**ASSIGN DB PRIVILEGES TO USER**
+
+`` ssh
+GRANT ALL PRIVILEGES ON DATABASE store_frontend_staging TO postgres;
+``
+
+`` ssh
+GRANT ALL PRIVILEGES ON DATABASE store_frontend_test TO postgres;
+``
+
+**Install Application**
+
+`npm install`
+
+**To Migrate application**
+
+`npm run migrate`
+
+**To Seed application**
+
+`npm run db:seed`
+
+
+**Admin Email and Password**
+
+email :: sameh@gmail.com
+
+password :: 123456
+
+**To Rollback Migrate application**
+
+`npm run migrate-rollback`
+
+**To test application**
+
+`npm run test`
+
+
+**To build application**
+
+`npm run build`
+
+**To start application**
+
+`npm run start`
+
 
 ### Structures
 
@@ -24,49 +94,3 @@ This project is simple e-commerce with Node.JS, Express Server and Postgresql.
 - src/requests contains the validations of each requests
 - src/seeders contains the required seeders for the applications
 - src/services contains all required logics
-
-### Commands
-
-Install Application
-
-`npm install`
-
-To Migrate application
-
-`npm run migrate`
-
-To Seed application
-
-`npm run db:seed`
-
-
-Admin Email and Password
-
-email :: sameh@gmail.com
-
-password :: 123456
-
-
-To Rollback Migrate application
-
-`npm run migrate-rollback`
-
-
-To test application
-
-`npm run test`
-
-
-To build application
-
-`npm run build`
-
-To start application
-
-`npm run start`
-
-
-Project run on Port 300,
-
-Testing DB called store_frontend_staging
-Current DB called store_frontend_test
