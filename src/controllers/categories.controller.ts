@@ -6,7 +6,7 @@ import {
   NOF_FOUND,
   VALIDATION_RESPONSE,
 } from '../helpers/status.codes.helper';
-import CategoriesService from "../services/categories.service";
+import CategoriesService from '../services/categories.service';
 
 const _service = CategoriesService;
 

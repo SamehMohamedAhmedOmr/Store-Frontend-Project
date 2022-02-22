@@ -66,4 +66,7 @@ To start application
 `npm run start`
 
 
+Project run on Port 300,
 
+Testing DB called store_frontend_staging
+Current DB called store_frontend_test

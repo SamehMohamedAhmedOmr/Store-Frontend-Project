@@ -6,7 +6,7 @@ import {
   NOF_FOUND,
   VALIDATION_RESPONSE,
 } from '../helpers/status.codes.helper';
-import OrdersService from "../services/orders.service";
+import OrdersService from '../services/orders.service';
 
 const _service = OrdersService;
 
@@ -35,12 +35,7 @@ export default class OrdersController {
       if (model) {
         return response(SUCCESS, res, model);
       } else {
-        return response(
-          VALIDATION_RESPONSE,
-          res,
-          model,
-          'Cart is Empty'
-        );
+        return response(VALIDATION_RESPONSE, res, model, 'Cart is Empty');
       }
     } catch (error) {
       return response(INTERNAL_SERVER_ERROR, res, error);

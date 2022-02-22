@@ -20,6 +20,14 @@ Postman Link => https://documenter.getpostman.com/view/18438451/UVkmQx4M#1536f6d
 - Get
 - Update
 
+columns 
+
+- id
+- email
+- password
+- first_name
+- last_name
+- type
 
 ### Categories
 
@@ -32,6 +40,10 @@ Postman Link => https://documenter.getpostman.com/view/18438451/UVkmQx4M#c278ad8
 - Get
 - Update
 
+columns
+
+- id
+- name
 
 ### Products
 
@@ -46,6 +58,13 @@ Postman Link => https://documenter.getpostman.com/view/18438451/UVkmQx4M#7b4ce4a
 - filter by category, add query_param category_id to list api
 - Most viewed product => https://documenter.getpostman.com/view/18438451/UVkmQx4M#7e5e0b9c-eed8-43cf-8967-7d729e079efd
 
+columns
+
+- id
+- name
+- price
+- category_id
+- views
 
 ### Cart
 Endpoint => api/cart,
@@ -55,6 +74,20 @@ Postman Link => https://documenter.getpostman.com/view/18438451/UVkmQx4M#6318ab1
 - List
 - Create
 - delete
+
+columns of cart
+
+- id
+- user_id
+
+
+columns of cart items
+
+- id
+- cart_id
+- product_id
+- quantity
+
 
 ### Order
 
@@ -67,3 +100,15 @@ https://documenter.getpostman.com/view/18438451/UVkmQx4M#fb70a45a-f238-4733-9ff2
 - Create
 - details
 
+columns of order
+
+- id
+- user_id
+
+
+columns of order items
+
+- id
+- order_id
+- product_id
+- quantity

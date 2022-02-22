@@ -1,10 +1,7 @@
 import express from 'express';
 import UsersController from '../../controllers/users.controller';
-import {
-  createRequest,
-  UpdateRequest,
-} from '../../requests/user.request';
-import {admin_guard} from "../../middleware/admin.guard";
+import { createRequest, UpdateRequest } from '../../requests/user.request';
+import { admin_guard } from '../../middleware/admin.guard';
 
 const users_route = express.Router();
 const _controller = UsersController;

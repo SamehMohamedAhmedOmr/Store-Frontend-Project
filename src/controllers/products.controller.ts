@@ -6,7 +6,7 @@ import {
   NOF_FOUND,
   VALIDATION_RESPONSE,
 } from '../helpers/status.codes.helper';
-import ProductsService from "../services/products.service";
+import ProductsService from '../services/products.service';
 
 const _service = ProductsService;
 
@@ -76,5 +76,4 @@ export default class ProductsController {
       return response(INTERNAL_SERVER_ERROR, res, error);
     }
   };
-
 }

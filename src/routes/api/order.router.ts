@@ -1,6 +1,6 @@
 import express from 'express';
-import {authorized} from "../../middleware/auth.guard";
-import OrdersController from "../../controllers/orders.controller";
+import { authorized } from '../../middleware/auth.guard';
+import OrdersController from '../../controllers/orders.controller';
 
 const routes = express.Router();
 const _controller = OrdersController;

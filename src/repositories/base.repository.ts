@@ -47,9 +47,10 @@ export default abstract class BaseRepository<T>
   }
 
   async delete(id: number): Promise<boolean> {
-    const result = await DB.query(`DELETE FROM ${this.table} WHERE id = ${id}`, [
-      id,
-    ]);
+    const result = await DB.query(
+      `DELETE FROM ${this.table} WHERE id = ${id}`,
+      [id]
+    );
     return result.rowCount > 0;
   }
 }
