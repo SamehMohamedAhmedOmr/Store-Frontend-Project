@@ -3,4 +3,5 @@ export interface ProductsModel {
   name: string;
   price: number;
   category_id: number;
+  views: number
 }

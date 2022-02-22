@@ -35,7 +35,16 @@ Postman Link => https://documenter.getpostman.com/view/18438451/UVkmQx4M#c278ad8
 
 ### Products
 
-- TEST
+Endpoint => api/products,
+
+Postman Link => https://documenter.getpostman.com/view/18438451/UVkmQx4M#7b4ce4af-7240-4134-b8a2-874acc96d2fd
+
+- List
+- Create
+- Get
+- Update
+- filter by category, add query_param category_id to list api
+- Most viewed product => https://documenter.getpostman.com/view/18438451/UVkmQx4M#7e5e0b9c-eed8-43cf-8967-7d729e079efd
 
 
 ### Cart
