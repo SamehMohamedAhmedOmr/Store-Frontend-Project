@@ -3,4 +3,5 @@ export interface CartItemsModel {
   cart_id: number;
   product_id: number;
   quantity: number;
+  name?: string;
 }

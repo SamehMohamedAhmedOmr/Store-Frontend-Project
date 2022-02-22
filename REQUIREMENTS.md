@@ -48,8 +48,13 @@ Postman Link => https://documenter.getpostman.com/view/18438451/UVkmQx4M#7b4ce4a
 
 
 ### Cart
+Endpoint => api/cart,
 
-- TEST
+Postman Link => https://documenter.getpostman.com/view/18438451/UVkmQx4M#6318ab14-2f78-4dcc-b756-573dff3906b1
+
+- List
+- Create
+- delete
 
 ### Order
 
