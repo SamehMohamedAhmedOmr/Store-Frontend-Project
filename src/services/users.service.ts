@@ -1,33 +1,56 @@
-import { Request, Response } from 'express';
+import {Request, Response} from 'express';
 import UsersRepository from '../repositories/users.repository';
-import { User } from '../models/user.model';
+import {User} from '../models/user.model';
+import {hidePassword} from "../helpers/sanitizer";
+import bcrypt from "bcrypt";
+import application_config from "../config/app.config";
 
 const _repo = new UsersRepository();
 
 export default class UsersService {
-  static index = async (): Promise<User[]> => {
-    return await _repo.index();
-  };
+    static index = async (): Promise<User[]> => {
+        let target_users: User[] = []
 
-  static get = async (req: Request): Promise<User | null> => {
-    const { id } = req.params;
-    const post = await _repo.get(parseInt(id));
-    if (!post) {
-      return null;
-    }
-    return post;
-  };
+        await _repo.index().then(users => {
+            users.forEach(user => {
+                target_users.push(hidePassword(user));
+            })
+        });
 
-  static create = async (req: Request, res: Response): Promise<User | null> => {
-    const post = req.body;
-    const user = res.locals.user;
-    post.user_id = user.id;
-    return await _repo.create(post);
-  };
+        return target_users;
+    };
 
-  static update = async (req: Request): Promise<User | null> => {
-    const model = req.body;
-    const model_id = req.params.id;
-    return await _repo.update(model, Number(model_id));
-  };
+    static get = async (req: Request): Promise<User | null> => {
+        const {id} = req.params;
+        let model = await _repo.get(parseInt(id));
+        model = hidePassword(model);
+        if (!model) {
+            return null;
+        }
+        return model;
+    };
+
+    static create = async (req: Request, res: Response): Promise<User | null> => {
+        const model = req.body;
+        model.password = bcrypt.hashSync(
+            model.password + application_config.bcrypt_paper,
+            application_config.bcrypt_salt
+        );
+
+        let target_model = await _repo.create(model);
+        return hidePassword(target_model);
+    };
+
+    static update = async (req: Request): Promise<User | null> => {
+        const model = req.body;
+        if (model.password) {
+            model.password = bcrypt.hashSync(
+                model.password + application_config.bcrypt_paper,
+                application_config.bcrypt_salt
+            );
+        }
+        const model_id = req.params.id;
+        let target_model = await _repo.update(model, Number(model_id));
+        return hidePassword(target_model);
+    };
 }

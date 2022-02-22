@@ -36,7 +36,7 @@ export default abstract class BaseRepository<T>
 
   async update(model: Partial<T>, id: number): Promise<T> {
     const columns = Object.keys(model).filter((key) => key != 'id');
-    const values = Object.values(model).filter((key) => key != 0);
+    const values = Object.values(model);
     const columns_values = columns
       .map((column, index) => `${column} = $${index + 1}`)
       .join(', ');

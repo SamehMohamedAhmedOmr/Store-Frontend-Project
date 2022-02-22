@@ -10,7 +10,7 @@ routes.get('/', (req: Request, res: Response): void => {
   res.send('Main APIs router');
 });
 
-// routes.use('/users', users_route);
+routes.use('/users', users_route);
 routes.use('/auth', authentication_route);
 routes.use('/categories', categories_route);
 
