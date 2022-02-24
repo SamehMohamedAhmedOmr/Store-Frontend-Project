@@ -6,7 +6,9 @@
   "scripts": {
     "prettier": "prettier --config .prettierrc \"src/**/*.ts\" --write",
     "lint": "eslint \"src/**/*.ts\"",
-    "build": "npx tsc",
+    "clean": "rimraf  \"dist/**/*.js\"",
+    "prebuild": "npm run clean",
+    "build": "npm run prebuild && npx tsc",
     "jasmine": "jasmine",
     "migrate": "db-migrate --env test up && db-migrate up",
     "migrate-rollback": "db-migrate --env test down && db-migrate down",
