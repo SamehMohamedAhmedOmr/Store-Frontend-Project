@@ -28,14 +28,14 @@ api/users
 
 Table name **users**
 
-| Column        | Type                  |   
-| ------------- |-----------------------|
-| id            | INTEGER - PRIMARY KEY |
-| email         | VARCHAR(255)          |
-| password      | VARCHAR(255)          |  
-| first_name    | VARCHAR(255)          |  
-| last_name     | VARCHAR(255)          |  
-| type          | INTEGER               |  
+| Column       |          Type             | Collation  | Nullable  |              Default                |
+| ------------ | --------------------------| -----------| ----------| ----------------------------------- |
+| id           | integer                   |            | not null  | nextval('users_id_seq'::regclass)   |
+| first_name   | character varying(255)    |            |           |                                     |
+| last_name    | character varying(255)    |            |           |                                     |
+| password     | character varying(255)    |            |           |                                     |
+| email        | character varying(255)    |            |           |                                     |
+| type         | integer                   |            |           |                                     |
 
 
 ### Categories
@@ -57,10 +57,11 @@ Table name **users**
 
 Table name **categories**
 
-| Column        | Type                  |   
-| ------------- |-----------------------|
-| id            | INTEGER - PRIMARY KEY |
-| name          | VARCHAR(255)          |
+
+| Column       |          Type             | Collation  | Nullable  |              Default                     |
+| ------------ | --------------------------| -----------| ----------| ---------------------------------------- |
+| id           | integer                   |            | not null  | nextval('categories_id_seq'::regclass)   |
+| name         | character varying(255)    |            |           |                                          |
 
 
 ### Products
@@ -85,14 +86,14 @@ api/products,
 
 Table name **products**
 
-| Column        | Type                  |   
-| ------------- |-----------------------|
-| id            | INTEGER - PRIMARY KEY |
-| name          | VARCHAR(255)          |
-| price         | FLOAT                 |  
-| category_id   | INTEGER               |
-| views         | INTEGER               |  
 
+| Column       |          Type             | Collation  | Nullable  |              Default                  |
+| ------------ | --------------------------| -----------| ----------| ------------------------------------- |
+| id           | integer                   |            | not null  | nextval('products_id_seq'::regclass)  |
+| name         | character varying(255)    |            |           |                                       |
+| price        | double precision          |            |           |                                       |
+| category_id  | integer                   |            | not null  |                                       |
+| views        | integer                   |            |           | 0                                     | 
 
 ### Cart
 
@@ -113,20 +114,20 @@ api/cart,
 Table name **cart**
 
 
-| Column        | Type                  |   
-| ------------- |-----------------------|
-| id            | INTEGER - PRIMARY KEY |
-| user_id       | INTEGER               |
+| Column       |          Type             | Collation  | Nullable  |              Default                  |
+| ------------ | --------------------------| -----------| ----------| ------------------------------------- |
+| id           | integer                   |            | not null  | nextval('cart_id_seq'::regclass)      |
+| user_id      | integer                   |            | not null  |                                       |   
 
 
 Table name **cart_items**
 
-| Column        | Type                  |   
-| ------------- |-----------------------|
-| id            | INTEGER - PRIMARY KEY |
-| quantity      | INTEGER               |  
-| cart_id       | INTEGER               |
-| product_id    | INTEGER               |  
+| Column       |          Type             | Collation  | Nullable  |              Default                    |
+| ------------ | --------------------------| -----------| ----------| --------------------------------------- |
+| id           | integer                   |            | not null  | nextval('cart_items_id_seq'::regclass)  |
+| cart_id      | integer                   |            | not null  |                                         | 
+| product_id   | integer                   |            | not null  |                                         | 
+| quantity     | integer                   |            |           |                                         | 
 
 
 ### Order
@@ -145,17 +146,18 @@ api/orders,
 
 Table name **orders**
 
-| Column        | Type                  |   
-| ------------- |-----------------------|
-| id            | INTEGER - PRIMARY KEY |
-| user_id       | INTEGER               |
+| Column       |          Type             | Collation  | Nullable  |              Default                  |
+| ------------ | --------------------------| -----------| ----------| ------------------------------------- |
+| id           | integer                   |            | not null  | nextval('orders_id_seq'::regclass)    |
+| user_id      | integer                   |            | not null  |                                       |
 
 Table name **order_items**
 
-| Column        | Type                  |   
-| ------------- |-----------------------|
-| id            | INTEGER - PRIMARY KEY |
-| quantity      | INTEGER               |  
-| order_id      | INTEGER               |
-| product_id    | INTEGER               |  
+| Column       |          Type             | Collation  | Nullable  |              Default                    |
+| ------------ | --------------------------| -----------| ----------| --------------------------------------- |
+| id           | integer                   |            | not null  | nextval('order_items_id_seq'::regclass) |
+| order_id     | integer                   |            | not null  |                                         | 
+| product_id   | integer                   |            | not null  |                                         | 
+| quantity     | integer                   |            |           |                                         | 
+
 
