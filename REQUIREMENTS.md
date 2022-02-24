@@ -28,13 +28,15 @@ api/users
 
 Table name **users**
 
-Columns
-- id
-- email
-- password
-- first_name
-- last_name
-- type
+| Column        | Type                  |   
+| ------------- |-----------------------|
+| id            | INTEGER - PRIMARY KEY |
+| email         | VARCHAR(255)          |
+| password      | VARCHAR(255)          |  
+| first_name    | VARCHAR(255)          |  
+| last_name     | VARCHAR(255)          |  
+| type          | INTEGER               |  
+
 
 ### Categories
 
@@ -55,9 +57,11 @@ Columns
 
 Table name **categories**
 
-Columns
-- id
-- name
+| Column        | Type                  |   
+| ------------- |-----------------------|
+| id            | INTEGER - PRIMARY KEY |
+| name          | VARCHAR(255)          |
+
 
 ### Products
 
@@ -81,13 +85,14 @@ api/products,
 
 Table name **products**
 
-columns
+| Column        | Type                  |   
+| ------------- |-----------------------|
+| id            | INTEGER - PRIMARY KEY |
+| name          | VARCHAR(255)          |
+| price         | FLOAT                 |  
+| category_id   | INTEGER               |
+| views         | INTEGER               |  
 
-- id
-- name
-- price
-- category_id
-- views
 
 ### Cart
 
@@ -107,20 +112,21 @@ api/cart,
 
 Table name **cart**
 
-columns
 
-- id
-- user_id
+| Column        | Type                  |   
+| ------------- |-----------------------|
+| id            | INTEGER - PRIMARY KEY |
+| user_id       | INTEGER               |
 
 
 Table name **cart_items**
 
-columns
-
-- id
-- cart_id
-- product_id
-- quantity
+| Column        | Type                  |   
+| ------------- |-----------------------|
+| id            | INTEGER - PRIMARY KEY |
+| quantity      | INTEGER               |  
+| cart_id       | INTEGER               |
+| product_id    | INTEGER               |  
 
 
 ### Order
@@ -139,16 +145,17 @@ api/orders,
 
 Table name **orders**
 
-columns
-
-- id
-- user_id
+| Column        | Type                  |   
+| ------------- |-----------------------|
+| id            | INTEGER - PRIMARY KEY |
+| user_id       | INTEGER               |
 
 Table name **order_items**
 
-columns
+| Column        | Type                  |   
+| ------------- |-----------------------|
+| id            | INTEGER - PRIMARY KEY |
+| quantity      | INTEGER               |  
+| order_id      | INTEGER               |
+| product_id    | INTEGER               |  
 
-- id
-- order_id
-- product_id
-- quantity
