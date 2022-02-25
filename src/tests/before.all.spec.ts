@@ -1,5 +1,3 @@
-
-
 import ProductsRepository from "../repositories/products.repository";
 import CategoriesRepository from "../repositories/categories.repository";
 
@@ -8,10 +6,8 @@ import {
     products_temp
 } from './helpers/temp_data';
 
-
 const categoriesRepository = new CategoriesRepository();
 const productsRepository = new ProductsRepository();
-
 
 
 beforeAll(async () => {

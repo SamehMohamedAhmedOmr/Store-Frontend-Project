@@ -23,7 +23,6 @@ describe('ORDER APISs', () => {
     it('Create', async () => {
         const response = await request.post('/api/orders')
             .set('Authorization', 'Bearer ' + target_token);
-        console.log(response.body);
         expect(response.status).toBe(200);
     });
 
