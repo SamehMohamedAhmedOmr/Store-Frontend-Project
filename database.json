@@ -19,7 +19,7 @@
       "ENV": "POSTGRES_USERNAME"
     },
     "password": {
-      "ENV": "POSTGRES_PASSWORD"
+      "ENV": "POSTGRES_PASSWORD_TESTING"
     },
     "database": {
       "ENV": "POSTGRES_DB_TESTING"

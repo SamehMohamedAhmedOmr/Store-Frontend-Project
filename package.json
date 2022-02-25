@@ -13,7 +13,7 @@
     "migrate": "db-migrate --env test up && db-migrate up",
     "migrate-rollback": "db-migrate --env test down && db-migrate down",
     "db:seed": "npm run build&&node dist/seeders/database.seeder.js",
-    "db-test": "ENV=test db-migrate --env test up && jasmine-ts && db-migrate db:drop test",
+    "db-test": "ENV=test db-migrate --env test up && jasmine && db-migrate db:drop test",
     "test": "npm run build && npm run jasmine --silent && npm run db-test",
     "start": "nodemon src/server.ts"
   },
