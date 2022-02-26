@@ -10,7 +10,8 @@
     },
     "database": {
       "ENV": "POSTGRES_DB"
-    }
+    },
+    "ENVIRONMENT": "dev"
   },
   "test": {
     "driver": "pg",
@@ -23,7 +24,8 @@
     },
     "database": {
       "ENV": "POSTGRES_DB_TESTING"
-    }
+    },
+    "ENVIRONMENT": "test"
   },
   "sql-file": true
 }

@@ -13,8 +13,8 @@
     "migrate": "db-migrate --env test up && db-migrate up",
     "migrate-rollback": "db-migrate --env test down && db-migrate down",
     "db:seed": "npm run build&&node dist/seeders/database.seeder.js",
-    "db-test": "db-migrate --env test up && jasmine && db-migrate db:drop test",
-    "test": "npm run build && npm run jasmine --silent && npm run db-test",
+    "db-test": "set ENVIRONMENT=test && db-migrate --env test up && npm run jasmine && db-migrate db:drop test",
+    "test": "npm run build && npm run db-test",
     "start": "nodemon src/server.ts"
   },
   "author": "Sameh Mohamed Omar",
@@ -45,6 +45,7 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "db-migrate": "^0.11.13",
     "db-migrate-pg": "^1.2.2",
     "dotenv": "^16.0.0",
